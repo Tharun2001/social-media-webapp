@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../navbar.css">
+  <link rel="stylesheet" href="../mainstyle.css">
+  <title>SoMe</title>
+  <script>
+    window.onload = function()
+    {
+      var profileid = sessionStorage.getItem('uid');
+      console.log(profileid);
+      var html = "";
+        $.ajax({
+        type: 'GET',
+        url: "../getFriendsdet.php",
+        data: { id: profileid },
+        success: function(data){
+            profile = JSON.parse(data);
+            console.log(profile);
+            html = `<table class="profile-img-table">
+            <tr>`;
+              if(profile[0].profilepic == null || profile[0].profilepic.length == 0)
+                {
+                    html += `<td><img class="profile-defaultimg" src="../image/profilepic/defaultuser.png"></td>`;
+                }
+                else
+                {
+                    html += `<td><img class="profile-userimg" src="../image/profilepic/`+ profile[0].profilepic +`"></td>`;
+                }
+            html += `</tr>
+            </table>
+            <table class="profile-statstable" style="position: absolute; margin-top: 30px">  
+            <tr>
+            <td style="text-align: left;">`+ profile[0].uname +`<input type="button" value="Edit Profile" class="btn-edit"  onclick="edit()"></td>
+            </tr><tr>`;
+               if(profile[0].following == null)
+                {
+                    html = html + `<td><b>0</b>&nbspfollowing</td>`;
+                }
+                else
+                {
+                    html = html + `<td><button onclick="following(`+profile[0].uid+`)" class="btn-view-follow"><b>`+profile[0].following+`</b>&nbspfollowing</button></td>`;
+                }
+
+                if(profile[0].followers == null)
+                {
+                    html = html + `<td><b>0</b>&nbspfollower</td>`;
+                }
+                else
+                {
+                    html = html + `<td><button onclick="followers(`+profile[0].uid+`)" class="btn-view-follow"><b>`+profile[0].followers+`</b>&nbspfollowers</button></td>`;
+                }
+
+                if(profile[0].posts == null)
+                {
+                    html = html + `<td><b>0</b>&nbspposts</td>`;
+                }
+                else
+                {
+                    html = html + `<td><b>`+profile[0].posts+`</b>&nbspposts</td>`;
+                }
+                
+                // html= html + `</tr>            
+                //  <tr>
+                //   <td colspan="3" style=" padding: 0px 10px;text-align: left; font-size: 18px; font-family: arial" ><pre style="font-family: arial">`+ profile[0].bio +`</pre></td>
+                // </tr>
+                       
+                if(profile[0].bio != null)
+                {
+                    html= html + `</tr>            
+                 <tr>
+                  <td colspan="3" style=" padding: 0px 10px;text-align: left; font-size: 18px; font-family: arial" ><pre style="font-family: arial">`+ profile[0].bio +`</pre></td>
+                 </tr>`;
+                }
+               
+                html+=`</tr>
+            </table>`;
+            profilenode = document.getElementById('profile');
+            profilenode.innerHTML = html;
+            
+          },
+        async: true
+        });
+
+
+      }
+      function home()
+      {
+        window.location.href = "../main/display.php";
+      }
+      function following(id)
+      {
+
+        window.location.href = "../viewfollow/following.html?profileid="+ id;
+      }
+      function followers(id)
+      {
+
+        window.location.href = "../viewfollow/followers.html?profileid="+ id;
+      }
+      function edit()
+      {
+        window.location.href = "../edit/editprofile.html"; 
+      }
+    </script>  
+</head>
+<body>
+    <div id="nav-bar">
+        <a class="home"  href="../main/display.php">Home</a>
+        <a href="../logout.php">Logout</a>
+        <a class="a-people" href="../People/people.html">People</a>
+        <a class="a-chat" href="../chat/chat.html">Chat</a>
+        <a class="a-profile" style="background-color: #4CAF50;" href="profile.html">Profile</a>   
+    </diV>
+
+    <div id="profile">
+    </diV>       
+</body>
+</html>
+

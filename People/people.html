@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="people.js"></script>
+  <link rel="stylesheet" href="../navbar.css">
+  <link rel="stylesheet" href="people.css">
+  <title>SoMe</title>
+  <script>
+    window.onload = function(){
+    $.ajax({
+        type: 'GET',
+        url: "suggest.php",
+        data: { },
+        success: function(data){
+            data = JSON.parse(data);
+            if(data.length != 0)
+            {
+                html = `<h2>Suggested</h2><table class="profile-table">`+formTable(data);
+                document.getElementById('suggest').innerHTML += html;
+            }
+
+        },
+        async: true
+        });
+    
+    $.ajax({
+        type: 'GET',
+        url: "all.php",
+        data: { },
+        success: function(data){
+            data = JSON.parse(data);
+            if(data.length != 0)
+            {
+                html = `<h2>Discover people</h2><table class="profile-table">`+formTable(data);
+                document.getElementById('all').innerHTML += html;
+            }
+
+        },
+        async: true
+        });
+      }
+  </script>
+</head>
+<body>
+    <div id="nav-bar">
+        <a class="home" href="../main/display.php">Home</a>
+
+        <a href="../logout.php">Logout</a>
+        <a class="a-people" style="background-color: #4CAF50;" href="people.html">People</a>
+        <a class="a-chat" href="../chat/chat.html">Chat</a>
+        <a class="a-profile" href="../Profile/profile.html">Profile</a>    
+    </diV> 
+
+    <div id="suggest">
+      
+
+    </div>
+    <div id="all">
+
+    </div>
+    
+</body>
+</html>

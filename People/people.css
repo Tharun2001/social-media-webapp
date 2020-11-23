@@ -1,0 +1,44 @@
+#suggest,#all,#followers,#following{
+    margin-left: 500px;
+    margin-top: 60px;
+}
+
+img{
+    border: 3px solid black;
+    border-radius: 120px;
+    width: 75px;
+    height: 75px;
+}
+.profile-table td{
+    font-size:  30px;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-profile{
+  text-decoration: none;
+  border:none;
+  font-size:  30px;
+  padding: 10px;
+  background-color: white;
+  padding:0 1.0rem;
+}
+
+.btn-profile:hover{
+cursor: pointer;
+}
+
+.btn-profile:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.profile-name{
+  position: absolute;
+  margin-left: 60px;
+  margin-top: -68px;
+
+}
+
+
+

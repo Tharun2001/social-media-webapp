@@ -1,0 +1,86 @@
+#wrapper{
+    position: absolute;
+    left: 500px;
+    top: 100px;
+    display: none;
+}
+#chatbox{
+    width: 300px;
+    height: 300px;
+    border: 2px solid green;
+    padding: 10px;
+    overflow-y: auto;
+}
+#msg{
+
+    width: 300px;
+    padding: 10px;
+    margin-top: 10px;;
+}
+#button{
+    position: relative;
+    left: 280px;
+}
+.sender{
+    text-align: right;
+    margin-bottom: 25px;
+}
+.receiver{
+    text-align: left;
+    margin-bottom: 25px;
+}
+p.sender span{
+    border-radius: 10px;
+    background: #00acee;
+    color: white;
+    font-family: arial;
+    padding: 10px;
+}
+p.receiver span{
+    border-radius: 10px;
+    background: rgb(219, 222, 224);
+    color:black;
+    padding: 10px;
+    font-family: arial;
+}
+#receiver_name{
+font-size: 20px;
+border: 5px solid green;
+padding: 10px;
+}
+.list-table{
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.list-table td{
+    font-size:16px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.list-table th{
+    padding-bottom: 10px;
+}
+.img-list{
+    border: 3px solid black;
+    border-radius: 120px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.btn-list,.btn-list:focus{
+    background: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.listname{
+    font-size: 16px;
+    position: relative;
+    bottom: 20px;
+    left: 4px;
+}
+
+textarea{
+    resize: vertical;
+}

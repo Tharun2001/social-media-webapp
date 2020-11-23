@@ -1,0 +1,43 @@
+img{
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 120px;
+    position: absolute;
+    margin-top: -2.8em;
+    margin-left: -0.9em;
+}
+#edit-profile{
+    margin-top: 100px;
+    margin-left: 500px;
+}
+
+.edit-table td{
+    font-size: 20px;
+    padding: 10px 20px;
+    font-family: Arial;
+}
+
+.text-input, textarea{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: solid black 1px;
+    font-size: 18px;
+    font-family: Arial;
+    width: 300px;
+}
+input[type=submit]{
+    background-color: rgba(9, 69, 148, 0.863);
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    font-size: 17px;
+    border-radius: 5px;
+}
+input[type=submit]:hover{
+    background-color: rgba(5, 39, 83, 0.863);
+    cursor: pointer;
+  }
+/* table, td{
+    border: solid black 1px;
+} */

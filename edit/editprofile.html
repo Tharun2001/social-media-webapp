@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../navbar.css">
+  <link rel="stylesheet" href="style.css">
+  <title>SoMe</title>
+  <script>
+      window.onload = function() {
+        $.ajax({
+            type: 'GET',
+            url: "getdetails.php",
+            data: { },
+            success: function(data){
+                  data = JSON.parse(data);
+                  console.log(data)
+                  for(var i=0; i<data.length ; i++)
+                  {
+                    document.getElementById('name').value = data[i].uname;
+                    document.getElementById('bio').value = data[i].bio;
+                    document.getElementById('password').value = data[i].password;
+                    if(data[i].profilepic == null || data[i].profilepic.length == 0)
+                    {
+                        document.getElementById('image').innerHTML = `<img src="../image/profilepic/defaultuser.png">`;
+                    }
+                    else
+                    {
+                        document.getElementById('image').innerHTML = `<img src="../image/profilepic/`+data[i].profilepic+`">`;
+                    } 
+                  }
+            },
+            async: true
+            });
+
+      }
+  </script>
+  <style>
+ 
+  </style>
+</head>
+<body>
+    <div id="nav-bar">
+        <a class="home"  href="../main/display.php">Home</a>
+        <a href="../logout.php">Logout</a>
+        <a class="a-people" href="../People/people.html">People</a>
+        <a class="a-chat" href="../chat/chat.html">Chat</a>
+        <a class="a-profile" href="../Profile/profile.html">Profile</a>   
+    </diV>
+
+    <div id="edit-profile" >
+        <form method="POST" action="submitprofile.php" enctype="multipart/form-data">
+        <table class="edit-table">
+            <tr>
+                <td rowspan="2" id="image"></td>
+                <td><input type="file" name="profilepic"></td>
+            </tr>
+            <tr>
+                <td>Change Profile pic</td>
+            </tr>
+            <tr>
+                <td><b>User name</b></td>
+                <td><input type="text" class="text-input" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top; "><b>Bio</b></td>
+                <td><textarea name="bio" id="bio" cols ="40" rows="7" style="resize: vertical;"></textarea></td>
+            </tr>
+            <tr>
+                <td><b>Password</b></td>
+                <td><input type="password" class="text-input" id="password" name="password" ></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="text-align: right; padding-top: 25px;"><input type="submit" value="Submit" name="edit-submit"></td>
+            </tr>
+        </table>   
+    </form>
+    </diV>
+    <br><br>
+    <br><br>         
+</body>
+</html>
+

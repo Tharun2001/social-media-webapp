@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="../People/people.js"></script>
+    <link rel="stylesheet" href="../navbar.css">
+    <link rel="stylesheet" href="../People/people.css">
+    <title>SoMe</title>
+    <script>
+        window.onload = function(){
+            let profileid = document.location.search.replace(/^.*?.*=/,'');
+            console.log(profileid);
+            $.ajax({
+            type: 'GET',
+            url: "followers.php",
+            data: { id: profileid},
+            success: function(data){
+            data = JSON.parse(data);
+            html = `<h2>Followers</h2><table class="profile-table">` + formTable(data);
+            document.getElementById("followers").innerHTML = html;
+            },
+            async: true
+            });
+
+        }
+    </script>
+</head>
+<body>
+    <div id="nav-bar">
+        <a class="home" href="../main/display.php">Home</a>
+        <!-- <input id="search" type="text" placeholder="Search" ></input>
+        <button>Search</button> -->
+
+        <a href="../logout.php">Logout</a>
+        <a class="a-people"  href="../People/people.html">People</a>
+        <a class="a-chat" href="../chat/chat.html">Chat</a>
+        <a class="a-profile" href="../Profile/profile.html">Profile</a>    
+    </diV> 
+    <div id= "followers">
+
+    </div>
+    
+</body>
+</html>

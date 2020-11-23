@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>LOGIN</title>
+	<style>
+	#login-div{ 
+    background-color: rgb(77, 180, 73);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+  }
+  #login-table{
+    margin-top: 20px;
+    margin-left: 750px;
+    font-size: 18px;
+  }
+ #signup-bg{
+    margin-left: 750px;
+    background-color: rgba(0, 0, 0, 0.692);
+    position: absolute;
+    right: 0px;
+    top: 90px;
+    height: 88.8%;
+    width: 55%;
+    
+  }
+  body{
+    background-image: url('soMe.jpg');
+    overflow: hidden;
+  }
+  #signup-div{
+    margin-top: 100px;
+    margin-left: 50px;
+    font-size: 20px;
+    color: white;
+  }
+  #signup-div input{
+    border-radius: 10px;
+    height: 1em;
+    width: 20em;
+    text-decoration: none;
+    padding: 10px;
+    box-shadow: none;
+    outline: none;
+    border: 1px solid #ccc;
+  }
+  button{
+    background-color: rgba(9, 69, 148, 0.863);
+    border: none;
+    color: white;
+  }
+  button:hover{
+    background-color: rgba(5, 39, 83, 0.863);
+    cursor: pointer;
+  }
+  #btn-login{
+    padding: 4px 10px;
+  }
+  #btn-sign{
+    padding: 10px 10px;
+    font-size: 16px;
+  }
+  </style>
+  <script>
+    function loginValidate()
+    {
+      uname = document.getElementById('uname').value;
+      pass = document.getElementById('pass').value
+      console.log(uname);
+      if( uname.length == 0 ||  pass.length == 0)
+        return false;
+    }
+    function signValidate()
+    {
+     
+      uname = document.getElementById('sign-uname').value;
+      pass = document.getElementById('sign-pass').value
+      repass = document.getElementById('sign-repass').value
+      if(uname.length == 0 ||  pass.length == 0 || pass != repass)
+        return false;
+    }
+  </script>
+  </head>
+  <body>
+    <br><br>
+	<div id="login-div">
+    <h1 style="position: absolute; margin-left: 200px; font-size: 40px; color: white" >WeShare</h1>
+    <form action="login_process.php" method="post" onsubmit="return loginValidate()">
+      <table id="login-table">
+      <tr>
+        <td style="font-family: Arial;"><b>Username: </b></td>
+        <td style="padding-left: 20px; font-family: Arial;"><b>Password:</b> </td>
+      </tr>
+      <tr>
+       
+        <td><input type="text" id="uname" name="uname" value=""></td>
+   
+        <td style="padding-left: 20px;"><input type="password" id="pass" name="pass" value="" ></td>
+        <td style="padding-left: 10px;"><button id="btn-login" type="submit" name="Submit" align="center">Login</button></td>
+      </tr>
+      </table>
+    </table>
+    </form>
+  </div>
+  <div id="bg-fill">
+
+  </div>
+
+  <div id="signup-bg">
+   <div id="signup-div">
+    <h2>Create an account</h2>
+    <p>It's simple and quick</p>
+    <form method="POST" action="signup.php" onsubmit="return signValidate()">
+    <table id="signup-table">
+      <tr>
+        <td>Email or Username: </td>
+      </tr>
+      <tr>
+        <td><input type="text" style="font-size: 20px;" id="sign-uname" name="sign-uname" ></td>
+      </tr>
+      <tr>
+        <td style="padding-top: 10px;">Password: </td>
+      </tr>
+      <tr>
+        <td><input type="password" style="font-size: 20px;" id="sign-pass" name="sign-pass" ></td>
+      </tr>
+      <tr>
+        <td style="padding-top: 10px;">Retype password: </td>
+      </tr>
+      <tr>
+        <td><input type="password" style="font-size: 20px;" id="sign-repass" name="sign-repass"></td>
+      </tr>
+      <tr>
+        <td style="padding-top: 20px;"><button id="btn-sign" type="submit" name="Submit" align="center">Signup</button></td>
+      </tr>
+    </table>
+  </form>
+   </div>
+	</div>
+  </body>
+</html>
